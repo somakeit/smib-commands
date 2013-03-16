@@ -1,5 +1,6 @@
 #!/bin/sh
-FILE="/tmp/shot-`date +%F.%H-%M-%S`.jpg"
+FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
+FILE="/tmp/$FILENAME"
 fswebcam $FILE
-scp $FILE members.somakeit.org.uk:www
-echo "Webcam: http://irccat.somakeit.org.uk/$FILE"
+scp --preserve $FILE members.somakeit.org.uk:www
+echo "Webcam: http://irccat.somakeit.org.uk/$FILENAME"

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nice -n 20 gzip -c9 /dev/urandom >/dev/null

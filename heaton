@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./heater &
+bash ./heater &
 echo "The heat is on."

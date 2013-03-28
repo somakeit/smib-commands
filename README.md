@@ -23,9 +23,10 @@ A command is a simple script and can be written in any language that
 `#!/usr/bin/env python`). Take a look at the example [debug.sh][]
 script.
 
-The extension of your command is ignored, but it should represent the
-language the script is written in - e.g. `.sh` for bash, `.py` for
-python, `.coffee` for CoffeeScript.
+The extension of your command does not affect how your command runs 
+(we use the shebang), but it **must** be present and it **should** 
+represent the language the script is written in - e.g. `.sh` for bash,
+`.py` for python, `.coffee` for CoffeeScript.
 
 The command is sent 3 or 4 arguments:
 

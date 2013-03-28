@@ -1,7 +1,8 @@
 #!/bin/bash
-for I in *; do
-  if [ "$I" != "README.md" ]; then
-    echo -n "${I/.*/} "
+for I in *.*; do
+  NOEXT=$(echo -n "${I}" | sed 's/\.[^.]*$//')
+  if [ "${NOEXT}" != "README" ]; then
+    echo -n "${NOEXT} "
   fi;
 done
 echo

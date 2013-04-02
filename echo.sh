@@ -1,2 +1,2 @@
 #!/bin/sh
-echo $4
+echo "$4"

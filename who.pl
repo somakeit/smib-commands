@@ -38,7 +38,7 @@ my @wl_output = `/usr/bin/ssh root\@$ROUTER_IP $WL assoclist $2>/dev/null`;
 my @assoc_macs;
 for my $line (@wl_output) {
   # If the line contains a MAC address, just put it in the array
-  if ($line =~ m/([0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2})/) {
+  if ($line =~ m/([0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2})/) {
     push @assoc_macs, $1;
   }
 }

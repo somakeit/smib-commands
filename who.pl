@@ -31,6 +31,7 @@ if (@sums > 0) {
   # make an array of people in the space
   my @present;
   for my $sum (@sums) {
+    chomp $sum;
     if (exists($FRIENDS->{$sum})) {
       push @present, $FRIENDS->{$sum};
     }

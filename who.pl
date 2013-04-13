@@ -33,23 +33,25 @@ sub uniq {my %s; grep {!$s{$_}++} @_}
 
 #if this is a message, store the hash and bail
 if ($context eq 'null') {
-  my $mac;
   if ($argv =~ m/([0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2})/) {
     #user gave us a MAC
-    $mac = $1;
+    my $mac = $1;
+
+    # make it uppercase
+    $mac =~ tr/[a-f]/[A-F]/;
+    # sum it
+    my $sum = `/bin/echo -n $mac | /usr/bin/sha256sum`;
+    if ($sum =~ m/(\w+)/) {
+      $sum = $1; 
+    }
+    #store the sum
+    open FH, ">>$FRIENDSFILE";
+    print FH "$sum $nick\n";
+    close FH;
+    print "Okay $nick, you're in.\n";
+    exit(0);
   }
-  # make it uppercase
-  $mac =~ tr/[a-f]/[A-F]/;
-  # sum it
-  my $sum = `/bin/echo -n $mac | /usr/bin/sha256sum`;
-  if ($sum =~ m/(\w+)/) {
-    $sum = $1; 
-  }
-  #store the sum
-  open FH, ">>$FRIENDSFILE";
-  print FH "$sum $nick\n";
-  close FH;
-  exit(0);
+  print "So, you need to tell me your MAC address if you want to register.\n";
 }
 
 # load more keys into the hashref from the file

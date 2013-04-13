@@ -52,6 +52,7 @@ if ($context eq 'null') {
     exit(0);
   }
   print "So, you need to tell me your MAC address if you want to register.\n";
+  exit(0);
 }
 
 # load more keys into the hashref from the file

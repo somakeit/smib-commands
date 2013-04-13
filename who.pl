@@ -55,13 +55,15 @@ if ($context eq 'null') {
 # load more keys into the hashref from the file
 # lines in the file have the format:
 # 234jlkj2349023jlkj234 brackendawson
-open FH, "$FRINDSFILE";
-for my $line (<FH>) {
-  if ($line =~ m/^(\w{64}) (\w+)/) {
-    $friends->{$1} = $2;
+if (-e $FRIENDSFILE) {
+  open FH, "$FRIENDSFILE";
+  for my $line (<FH>) {
+    if ($line =~ m/^(\w{64}) (\w+)/) {
+      $friends->{$1} = $2;
+    }
   }
+  close FH;
 }
-close FH;
 
 # Get MAC addresses
 my @sums = `cat /tmp/irccat.who.macs.* 2>/dev/null`;
@@ -71,8 +73,8 @@ if (@sums > 0) {
   my @present;
   for my $sum (@sums) {
     chomp $sum;
-    if (exists($FRIENDS->{$sum})) {
-      push @present, $FRIENDS->{$sum};
+    if (exists($friends->{$sum})) {
+      push @present, $friends->{$sum};
     }
   }
   # for the tech addicts

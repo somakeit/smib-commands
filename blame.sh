@@ -9,4 +9,4 @@ if [ "$CMD" == "" ]; then
   ehco "$1, command '$4' not found"
   exit;
 fi
-ehco "https://github.com/so-make-it/irccat-commands/blob/master/$CMD"
+ehco "https://github.com/so-make-it/irccat-commands/blame/master/$CMD"

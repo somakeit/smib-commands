@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+
+if [ $(expr $RANDOM % 20) -eq 0 ]; then
+  echo "Blame it on the rain."
+  exit;
+fi
 
 if [ "$4" == "" ]; then
   echo "$1, ?blame <commandname>"

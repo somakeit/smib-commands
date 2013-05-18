@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$4" | festival --tts
+echo "beep $4" | festival --tts
 if [ "$?" == "0" ]; then
   echo "$1, done"
 else

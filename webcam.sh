@@ -1,9 +1,4 @@
 #!/bin/sh
-echo "beep 5" | festival --tts
-echo "beep 4" | festival --tts
-echo "beep 3" | festival --tts
-echo "beep 2" | festival --tts
-echo "beep 1" | festival --tts
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
 /usr/bin/fswebcam -S 10 --title SoMakeIt $FILE

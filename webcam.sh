@@ -1,4 +1,5 @@
 #!/bin/sh
+/usr/bin/aplay webcam/5-4-3-2-1.wav
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
 /usr/bin/fswebcam -S 10 --title SoMakeIt $FILE

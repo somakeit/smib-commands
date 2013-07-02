@@ -2,7 +2,7 @@
 /usr/bin/aplay webcam/5-4-3-2-1.wav &
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
-/usr/bin/fswebcam -S 10101010101010101010 --title SoMakeIt $FILE
+/usr/bin/fswebcam -S 10 --title SoMakeIt $FILE
 if [ "$?" != "0" ]; then exit 1; fi
 wait %1
 echo "a Ca-cheek" | festival --tts

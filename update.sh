@@ -13,10 +13,10 @@ else
   exit 0;
 fi
 #did we actually change?
-if [[ $COMMIT -eq $(git rev-parse HEAD) ]]; then
+if [ $COMMIT == $(git rev-parse HEAD) ]; then
   echo "$1: no changes, stop that."
   exit 0;
 fi
 #make the new bot live (systemd respawn)
 echo "$1: Goodbye world! :-("
-killall smib.pl
+(sleep 3; killall smib.pl) &

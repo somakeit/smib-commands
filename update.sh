@@ -4,7 +4,7 @@ cd /home/irccat/smib
 COMMIT=$(git rev-parse HEAD)
 #if the password is a merge conflict, manual update is needed.
 git stash --quiet
-git pull --quiet
+git pull --quiet origin master
 git stash pop --quiet
 if [ "$?" == "0" ]; then
   echo "$1: git pull finished successfully"

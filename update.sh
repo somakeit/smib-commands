@@ -18,5 +18,5 @@ if [ $COMMIT == $(git rev-parse HEAD) ]; then
   exit 0;
 fi
 #make the new bot live (systemd respawn)
-echo "HEAD is now at \"$(git log --oneline -n 1)\", will now kill myself, goodbye world! :-("
-(sleep 3; killall smib.pl) &
+echo "HEAD is now at \"$(git log --oneline -n 1)\", will shortly kill myself, goodbye world! :-("
+echo '/usr/bin/killall smib.pl' | /usr/bin/at now + 1 minutes 2>/dev/null

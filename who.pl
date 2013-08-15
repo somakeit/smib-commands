@@ -100,6 +100,7 @@ if (@sums > 0) {
     # you end up here if there are only unknown macs associated
     print "$nick, I don't see anyone, try the webcam maybe?\n";
   }
+  print "Use '/MSG smib <your MAC>' to register for this\n";
   exit(0);
 }
 #you end up here if literally no MAC is associated. Or we just rebooted. Or cron is broken.

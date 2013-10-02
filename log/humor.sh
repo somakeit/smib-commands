@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FLOOD_SECS=10;
+FLOOD_SECS=180;
 
 #flood control time
 if [[ `/bin/date +%s` -lt `expr $(/bin/cat humor/flood_control) + $FLOOD_SECS` ]]; then

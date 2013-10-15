@@ -16,7 +16,7 @@ if [[ "$4" == *lol* ]] || \
    [[ "$4" == *lmao* ]] || \
    [[ "$4" == *LMAO* ]]; then
      echo "lol"
-fi
 
-#flood control
-/bin/date +%s > humor/flood_control
+     #flood control
+     /bin/date +%s > humor/flood_control
+fi

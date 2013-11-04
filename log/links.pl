@@ -59,7 +59,7 @@ if ($line =~ /(http:\S+)/ or
 
     #limit title length ansd strip naughty characters
     $title =~ s/[\t\n\r\f\a\e]//g;
-    $title = substr($title, 0, 64);
+    $title = substr($title, 0, 56);
 
     print "$tinyurl[0] - $title\n";
 

@@ -9,18 +9,18 @@ my $line = $ARGV[3];
 
 if ($line =~ /(http:\S+)/ or
     $line =~ /(https:\S+)/ or
-    $line =~ /(\S+\.com)/ or
-    $line =~ /(\S+\.org)/ or
-    $line =~ /(\S+\.net)/ or
-    $line =~ /(\S+\.edu)/ or
-    $line =~ /(\S+\.gov)/ or
-    $line =~ /(\S+\.tv)/ or
-    $line =~ /(\S+\.it)/ or
-    $line =~ /(\S+\.ac\.uk)/ or
-    $line =~ /(\S+\.co\.uk)/ or
-    $line =~ /(\S+\.gov\.uk)/ or
-    $line =~ /(\S+\.org\.uk)/ or
-    $line =~ /(\S+\.sch\.uk)/) {
+    $line =~ /(\S+\.com\S*)/ or
+    $line =~ /(\S+\.org\S*)/ or
+    $line =~ /(\S+\.net\S*)/ or
+    $line =~ /(\S+\.edu\S*)/ or
+    $line =~ /(\S+\.gov\S*)/ or
+    $line =~ /(\S+\.tv\S*)/ or
+    $line =~ /(\S+\.it\S*)/ or
+    $line =~ /(\S+\.ac\.uk\S*)/ or
+    $line =~ /(\S+\.co\.uk\S*)/ or
+    $line =~ /(\S+\.gov\.uk\S*)/ or
+    $line =~ /(\S+\.org\.uk\S*)/ or
+    $line =~ /(\S+\.sch\.uk\S*)/) {
   
   my $url = $1;
 
@@ -44,23 +44,25 @@ if ($line =~ /(http:\S+)/ or
   #stop the timout
   kill 9, $childpid;
 
-  foreach (@page) {
-    if ($_ =~ /<title>(.+)<\/title>/) {
-      my $title = $1;
+  #not all <title> tags are on the same line
+  chomp @page;
+  my $wholepage = join('', @page);
+  if ($wholepage =~ /<title>(.+)<\/title>/) {
+    my $title = $1;
 
-      #get a tinyurl to please the weechat users,
-      #tinyurl API wants a http/s on the front of everything
-      if ($url !~ /^https?:\/\//) {
-        $url = "http://$url";
-      }
-      my @tinyurl = capture('/usr/bin/wget', '-qO-', "http://tinyurl.com/api-create.php?url=$url");
-
-      #limit to 32 character titles
-      $title = substr($title, 0, 32);
-
-      print "$tinyurl[0] - $title\n";
-
-      exit 0;
+    #get a tinyurl to please the weechat users,
+    #tinyurl API wants a http/s on the front of everything
+    if ($url !~ /^https?:\/\//) {
+      $url = "http://$url";
     }
+    my @tinyurl = capture('/usr/bin/wget', '-qO-', "http://tinyurl.com/api-create.php?url=$url");
+
+    #limit title length ansd strip naughty characters
+    $title =~ s/[\t\n\r\f\a\e]//g;
+    $title = substr($title, 0, 64);
+
+    print "$tinyurl[0] - $title\n";
+
+    exit 0;
   }
 }

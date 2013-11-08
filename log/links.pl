@@ -30,7 +30,7 @@ if ($line =~ /(http:\S+)/ or
   my $childpid = fork(); 
   if (!$childpid) {
     #this is the child
-    sleep 10;
+    sleep 30;
     my $parentpid = getppid;
     kill 9, $parentpid;
     exit 1;

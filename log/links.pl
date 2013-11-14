@@ -52,18 +52,20 @@ if ($line =~ /(http:\S+)/ or
     $title = $1;
   }
 
-  #get a tinyurl to please the weechat users,
-  #tinyurl API wants a http/s on the front of everything
-  if ($url !~ /^https?:\/\//) {
-    $url = "http://$url";
+  if ( length($url) > 26) {
+    #get a tinyurl to please the weechat users,
+    #tinyurl API wants a http/s on the front of everything
+    if ($url !~ /^https?:\/\//) {
+      $url = "http://$url";
+    }
+    ($url, my @blah) = capture('/usr/bin/wget', '-qO-', "http://tinyurl.com/api-create.php?url=$url");
   }
-  my @tinyurl = capture('/usr/bin/wget', '-qO-', "http://tinyurl.com/api-create.php?url=$url");
 
   #limit title length ansd strip naughty characters
   $title =~ s/[\t\n\r\f\a\e]//g;
   $title = substr($title, 0, 56);
 
-  print "$tinyurl[0] - $title\n";
+  print "$url - $title\n";
 
   exit 0;
 }

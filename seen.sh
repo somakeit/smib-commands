@@ -16,7 +16,7 @@ fi
 
 if [ -f log/seen/$channel/$name ]; then
   echo -n "Yes, on "
-  /bin/ls -l log/seen/$channel/$name | /usr/bin/awk '{printf $5 " " $6 " " $7 " " $8}'
+  echo -n $(/usr/bin/stat -c %x log/seen/$channel/$name | /usr/bin/cut -d '.' -f 1)
   echo -n " $name said "
   /bin/cat log/seen/$channel/$name
 else

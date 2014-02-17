@@ -1,5 +1,5 @@
-irccat-commands
-===============
+smub-commands
+=============
 
 [smib][] is the So Make It bot, implemented using [irccat][]. He hangs
 around on #SoMakeIt and #SoutHACKton on irc.freenode.net and keeps us up
@@ -49,7 +49,7 @@ containing smib.
 Who maintains smib?
 -------------------
 
-[Benjie][]
+[Benjie][] (yea, right, ask Bracken).
 
 [Toad]: https://wiki.somakeit.org.uk/wiki/Toad
 [irccat]: https://github.com/RJ/irccat

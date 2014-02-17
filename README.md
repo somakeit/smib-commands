@@ -1,4 +1,4 @@
-smub-commands
+smib-commands
 =============
 
 [smib][] is the So Make It bot, implemented using [irccat][]. He hangs

@@ -29,6 +29,7 @@ import threading
 import re
 import signal
 import socket
+from collections import namedtuple
 
 # Used for bound_interface
 socket_socket = socket.socket
@@ -443,34 +444,11 @@ def speedtest():
         '--------------\n'
         'https://github.com/sivel/speedtest-cli')
 
-    parser = ArgParser(description=description)
-    # Give optparse.OptionParser an `add_argument` method for
-    # compatibility with argparse.ArgumentParser
-    try:
-        parser.add_argument = parser.add_option
-    except AttributeError:
-        pass
-    parser.add_argument('--share', action='store_true',
-                        help='Generate and provide a URL to the speedtest.net '
-                             'share results image')
-    parser.add_argument('--simple', action='store_true',
-                        help='Suppress verbose output, only show basic '
-                             'information')
-    parser.add_argument('--list', action='store_true',
-                        help='Display a list of speedtest.net servers '
-                             'sorted by distance')
-    parser.add_argument('--server', help='Specify a server ID to test against')
-    parser.add_argument('--mini', help='URL of the Speedtest Mini server')
-    parser.add_argument('--source', help='Source IP address to bind to')
-    parser.add_argument('--version', action='store_true',
-                        help='Show the version number and exit')
-
-    options = parser.parse_args()
-    if isinstance(options, tuple):
-        args = options[0]
-    else:
-        args = options
-    del options
+    # We don't want to parse command line args, so we just use this config:
+    # simple: true (want quiet output)
+    dictionary = {'simple': True, 'version': None, 'source': None, 'list': None,
+                  'server': None, 'mini': None, 'share': None}
+    args = namedtuple('Strict', dictionary.keys())(*dictionary.values())
 
     # Print the version and exit
     if args.version:

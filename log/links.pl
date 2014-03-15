@@ -36,10 +36,10 @@ if ($line =~ /(http:\S+)/ or
     exit 1;
   }
 
-  #wget will only follow 20 redirects.
+  #wget will only follow 20 redirects and no re-tries
   #capture will die if wget returns non 0 status,
   #for example, if the url is not valid.
-  my @page = capture('/usr/bin/wget', '-qO-', $url);
+  my @page = capture('/usr/bin/wget', '-t1', '-qO-', $url);
 
   #stop the timout
   kill 9, $childpid;

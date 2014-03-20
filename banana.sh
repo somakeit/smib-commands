@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "Have a banaaana!"
-echo "   @.           ,#"  
+echo "   n.           ,X"  
 echo "   \ `-._____,-'=/"
 echo "____`._ ----- _,'_____"
 echo "       `-----'"

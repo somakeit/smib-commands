@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "I've got a lovely bunch of coconuts" | festival --tts
 echo "Down at an English fair, one evening I was there" | festival --tts
 echo "When I heard a showman shouting underneath the flare" | festival --tts

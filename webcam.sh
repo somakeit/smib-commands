@@ -1,5 +1,6 @@
 #!/bin/sh
 echo "say cheese" | festival --tts
+sleep 5;
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
 /opt/vc/bin/raspistill -w 800 -h 600 -o $FILE

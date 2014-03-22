@@ -7,4 +7,4 @@ if [ "$?" != "0" ]; then exit 1; fi
 echo "Ca-cheek" | festival --tts
 /usr/bin/scp -p $FILE members.somakeit.org.uk:www
 if [ "$?" != "0" ]; then exit 1; fi
-echo "Webcam: http://irccat.somakeit.org.uk/$FILENAME http://irccat.somakeit.org.uk/eyecam.jpg"
+echo "Webcam: http://irccat.somakeit.org.uk/$FILENAME

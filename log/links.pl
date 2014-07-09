@@ -9,18 +9,7 @@ my $line = $ARGV[3];
 
 if ($line =~ /(http:\S+)/ or
     $line =~ /(https:\S+)/ or
-    $line =~ /(\S+\.com\S*)/ or
-    $line =~ /(\S+\.org\S*)/ or
-    $line =~ /(\S+\.net\S*)/ or
-    $line =~ /(\S+\.edu\S*)/ or
-    $line =~ /(\S+\.gov\S*)/ or
-    $line =~ /(\S+\.tv\S*)/ or
-    $line =~ /(\S+\.it\S*)/ or
-    $line =~ /(\S+\.ac\.uk\S*)/ or
-    $line =~ /(\S+\.co\.uk\S*)/ or
-    $line =~ /(\S+\.gov\.uk\S*)/ or
-    $line =~ /(\S+\.org\.uk\S*)/ or
-    $line =~ /(\S+\.sch\.uk\S*)/) {
+    $line =~ /\b((?<!\@)[^\s\@]+\.(?:com|org|net|edu|gov|tv|it|[a-z]{2,3}\.uk)\S*)/) {
   
   my $url = $1;
 

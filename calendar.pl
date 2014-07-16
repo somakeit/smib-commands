@@ -8,8 +8,6 @@ use Time::Local qw(timelocal);
 use HTTP::Request;
 use LWP::UserAgent;
 
-use Data::Dumper;
-
 my $calendar_id = 'c3at705hnnkj664j2gesvsnvh8%40group.calendar.google.com';
 my $api_key = 'AIzaSyAi4e9dEm5ejRBD2svOacNrmezaAfuVv08'; #safe for public viewing, if you use this I will just revoke it
 my $refer_url = 'https://wiki.somakeit.org.uk/wiki/Smib';
@@ -61,8 +59,6 @@ my $api_response = parse_json($http_response->{'_content'});
 
 #print the calendar entries
 foreach (@{$api_response->{'items'}}) {
-#print Dumper($_);
-
   my $when;
   if (defined $_->{'start'}{'dateTime'}) {
     $when = &formtime($_->{'start'}{'dateTime'});
@@ -71,7 +67,9 @@ foreach (@{$api_response->{'items'}}) {
   } else {
     next;
   }
+
   my $event = $_->{'summary'};
+
   my $location = "";
   if (defined $_->{'location'}) {
     $location = " @ $_->{'location'}";

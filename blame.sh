@@ -5,7 +5,7 @@ if [ $(expr $RANDOM % 20) -eq 0 ]; then
   exit;
 fi
 
-if [ "$4" == "" ]; then
+if ! [[ "$4" =~ ^[a-zA-Z]+s ]]; then
   echo "$1, ?blame <commandname>"
   exit;
 fi

@@ -11,7 +11,7 @@ use LWP::UserAgent;
 my $calendar_id = 'c3at705hnnkj664j2gesvsnvh8%40group.calendar.google.com';
 my $api_key = 'AIzaSyAi4e9dEm5ejRBD2svOacNrmezaAfuVv08'; #safe for public viewing, if you use this I will just revoke it
 my $refer_url = 'https://wiki.somakeit.org.uk/wiki/Smib';
-my $num_entries = 3;
+my $range_seconds = 7 * 24 * 3600; # how far in the future to show in seconds.
 
 # Converts the google format date to a perl format date
 sub formtime {
@@ -39,18 +39,23 @@ sub formdate {
   return $date;
 }
 
+#make time into google format
+sub google_time {
+  my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(shift());
+  $year += 1900;
+  $mon = sprintf('%02d', ++$mon);
+  $mday = sprintf('%02d', $mday);
+  $hour = sprintf('%02d', $hour);
+  $min = sprintf('%02d', $min);
+  $sec = sprintf('%02d', $sec);
+  return "$year-$mon-${mday}T$hour%3A$min%3A${sec}Z";
+}
 
 #make the request
-my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime;
-$year += 1900;
-$mon = sprintf('%02d', ++$mon);
-$mday = sprintf('%02d', $mday);
-$hour = sprintf('%02d', $hour);
-$min = sprintf('%02d', $min);
-$sec = sprintf('%02d', $sec);
-my $time_min = "$year-$mon-${mday}T$hour%3A$min%3A${sec}Z";
+my $time_min = google_time(time());
+my $time_max = google_time(time() + $range_seconds);
 my $agent = LWP::UserAgent->new();
-my $request = HTTP::Request->new(GET => "https://www.googleapis.com/calendar/v3/calendars/$calendar_id/events?key=$api_key&orderBy=startTime&singleEvents=true&timeMin=$time_min&maxResults=$num_entries");
+my $request = HTTP::Request->new(GET => "https://www.googleapis.com/calendar/v3/calendars/$calendar_id/events?key=$api_key&orderBy=startTime&singleEvents=true&timeMin=$time_min&timeMax=$time_max");
 $request->referer($refer_url); 
 my $http_response = $agent->request($request);
 

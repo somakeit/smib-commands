@@ -2,7 +2,7 @@
 
 user=$1
 channel=$2
-who=$(echo ${4,,} | /usr/bin/awk '{print $1}')
+who=$(echo ${4,,} | /usr/bin/awk '{print $1}' | tr '[\\~\[]' '[|^{]' | tr ']' '}')
 message=$(echo $4 | /usr/bin/awk '{for(i=2;i<=NF;++i)print " " $i}')
 
 if [[ $channel == "null" ]]; then
@@ -12,6 +12,11 @@ fi
 
 if [ -z "$who" ]; then
   echo "Who should I tell, $user?"
+  exit 0
+fi
+
+if [[ $who =~ ^[0-9a-z\|\^{}_\`-]+$ ]]; then echo -n ; else
+  echo "That's not a nick, $user."
   exit 0
 fi
 

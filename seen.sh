@@ -14,11 +14,11 @@ if [ -z "$name" ]; then
   exit 0
 fi
 
-if [ -f log/seen/$channel/$name ]; then
+if [ -f log/seen/$channel/${name,,} ]; then
   echo -n "Yes, on "
-  echo -n $(/usr/bin/stat -c %x log/seen/$channel/$name | /usr/bin/cut -d '.' -f 1)
+  echo -n $(/usr/bin/stat -c %x log/seen/$channel/${name,,} | /usr/bin/cut -d '.' -f 1)
   echo -n " $name said "
-  /bin/cat log/seen/$channel/$name
+  /bin/cat log/seen/$channel/${name,,}
 else
   echo "Sorry $user, I've not seen $name."
 fi

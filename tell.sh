@@ -2,7 +2,7 @@
 
 user=$1
 channel=$2
-who=$(echo $4 | /usr/bin/awk '{print $1}')
+who=$(echo ${4,,} | /usr/bin/awk '{print $1}')
 message=$(echo $4 | /usr/bin/awk '{for(i=2;i<=NF;++i)print " " $i}')
 
 if [[ $channel == "null" ]]; then

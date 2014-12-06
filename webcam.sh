@@ -4,7 +4,7 @@ sleep 5;
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
 echo "Ca-cheek" | festival --tts &
-/opt/vc/bin/raspistill -w 800 -h 600 -o $FILE
+/opt/vc/bin/raspistill --nopreview -t 1 -w 800 -h 600 -o $FILE
 if [ "$?" != "0" ]; then exit 1; fi
 /usr/bin/scp -p $FILE www.somakeit.org.uk:www
 if [ "$?" != "0" ]; then exit 1; fi

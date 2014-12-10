@@ -19,7 +19,7 @@ def ExtractData(forecastXML):
     for day in tree.find('channel').findall('item'):
         resultString += '\n' + 'Observed at ' + day.find('pubDate').text
         for line in day.find('description').text.split(', '):
-            resultString += '\n' + line
+            resultString += '\n' + line.replace(u'\xb0','')
 
     return resultString
 

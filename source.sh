@@ -9,4 +9,4 @@ if [ "$CMD" == "" ]; then
   echo "$1, command '$4' not found"
   exit;
 fi
-echo "https://github.com/so-make-it/irccat-commands/blob/master/$CMD"
+echo "https://github.com/somakeit/smib-commands/blob/master/$CMD"

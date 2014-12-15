@@ -1,7 +1,7 @@
 smib-commands
 =============
 
-[smib][] is the So Make It bot, implemented using [irccat][]. He hangs
+[smib][] is the So Make It bot, implemented using [smib.pl][]. He hangs
 around on #SoMakeIt and #SoutHACKton on irc.freenode.net and keeps us up
 to date. You can also send him commands...
 
@@ -28,7 +28,7 @@ The extension of your command does not affect how your command runs
 represent the language the script is written in - e.g. `.sh` for bash,
 `.py` for python, `.coffee` for CoffeeScript.
 
-The command is sent 3 or 4 arguments:
+The command is sent 3 or 4 arguments\*:
 
   1. Nick - the nick name of the user invoking us
   2. Channel - the channel over which the request was sent (or blank if
@@ -37,7 +37,9 @@ The command is sent 3 or 4 arguments:
   4. Args - the text sent by the user after the command (if any)
 
 Try to send as few lines as possible - preferably one but no more than
-4. (Any more than this will be truncated.)
+4. (Any more than this will be rate limited.)
+
+\*A full list of arguments is maintained on the [smib.pl][] documentation.
 
 Installing a command
 --------------------
@@ -49,11 +51,11 @@ containing smib.
 Who maintains smib?
 -------------------
 
-[Benjie][] (yea, right, ask Bracken).
+Anyone with push/commit access to this repository.
 
 [Toad]: https://wiki.somakeit.org.uk/wiki/Toad
-[irccat]: https://github.com/RJ/irccat
 [smib]: https://wiki.somakeit.org.uk/wiki/smib
+[smib.pl]: https://github.com/somakeit/smib
 [shebang]: http://en.wikipedia.org/wiki/Shebang_(Unix)
-[debug.sh]: https://github.com/so-make-it/irccat-commands/blob/master/debug.sh
+[debug.sh]: https://github.com/somakeit/smib-commands/blob/master/debug.sh
 [Benjie]: https://wiki.somakeit.org.uk/wiki/User:Benjie

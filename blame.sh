@@ -14,4 +14,4 @@ if [ "$CMD" == "" ]; then
   echo "$1, command '$4' not found"
   exit;
 fi
-echo "$1, the last person to modify the '$4' command was "$(git log -n 1 --pretty=format:"%an https://github.com/so-make-it/irccat-commands/commit/%h" -- "$CMD")
+echo "$1, the last person to modify the '$4' command was "$(git log -n 1 --pretty=format:"%an https://github.com/somakeit/smib-commands/commit/%h" -- "$CMD")

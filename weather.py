@@ -14,14 +14,18 @@ def GetForecastXML(locationCode):
 
 def ExtractData(forecastXML):
     tree = ET.fromstring(forecastXML)
-    resultString = tree.find('channel').find('title').text
+    results = []
+    results.append(tree.find('channel').find('title').text)
 
     for day in tree.find('channel').findall('item'):
-        resultString += '\n' + 'Observed at ' + day.find('pubDate').text
+        results.append('Observed at ' + day.find('pubDate').text)
         for line in day.find('description').text.split(', '):
-            resultString += '\n' + line.replace(u'\xb0','')
+            if(results[-1][-2:] == 'mb'):
+                results[-1] = results[-1] + ' ' + line.replace(u'\xb0','')
+            else:
+                results.append(line.replace(u'\xb0',''))
 
-    return resultString
+    return '\n'.join(results)
 
 def main():
     location = 'SO15'

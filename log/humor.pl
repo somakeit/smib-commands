@@ -8,7 +8,11 @@ my $FLOOD_SECS = 180;
 open FLOOD_CONTROL_FILE, '+<', 'humor/flood_control' or die "No flood control file writable.\n";
 
 #flood control time
-if ( time < (readline(FLOOD_CONTROL_FILE) + $FLOOD_SECS) ) {    # I hope that file contains what I think it does
+my $last_time = readline(FLOOD_CONTROL_FILE);
+if ($last_time < 1) {
+  die "Invalid file: humor/flood_control";
+}
+if ( time < $last_time + $FLOOD_SECS ) {
   exit 0;
 }
 

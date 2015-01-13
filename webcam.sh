@@ -6,7 +6,7 @@ FILE="/tmp/$FILENAME"
 echo "Ca-cheek" | festival --tts &
 /opt/vc/bin/raspistill --nopreview -t 3 -w 1280 -h 960 -o $FILE.1.jpg
 if [ "$?" != "0" ]; then exit 1; fi
-curl -o $FILE.2.jpg http://10.0.0.61:8080/latest.jpg
+curl -o $FILE.2.jpg http://10.0.0.64:8080/latest.jpg
 if [ "$?" == "0" ]; then
         convert $FILE.2.jpg -resize 1280x960 $FILE.3.jpg
         convert $FILE.1.jpg $FILE.3.jpg +append $FILE

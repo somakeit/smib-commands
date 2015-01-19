@@ -1,5 +1,5 @@
 #!/bin/bash
 
 if [[ $4 =~ botsnack ]]; then
-  echo yum
+  echo 'Mmm, Club-Mate :-)'
 fi

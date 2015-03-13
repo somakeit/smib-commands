@@ -4,7 +4,7 @@ sleep 5;
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
 echo "Ca-cheek" | festival --tts &
-/opt/vc/bin/raspistill --nopreview -t 8 --ISO 800 --exposure verylong --imxfx denoise -w 1280 -h 960 -o $FILE.1.jpg
+/opt/vc/bin/raspistill --nopreview -t 8 --exposure verylong -w 1280 -h 960 -o $FILE.1.jpg
 if [ "$?" != "0" ]; then exit 1; fi
 curl -o $FILE.2.jpg http://10.0.0.64:8080/latest.jpg
 if [ "$?" == "0" ]; then

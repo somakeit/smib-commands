@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if ! [[ "$4" =~ ^[a-zA-Z/]+$ ]]; then
+if ! [[ "$4" =~ ^[a-zA-Z0-9/]+$ ]]; then
   echo "$1, ?source <commandname>"
   exit;
 fi

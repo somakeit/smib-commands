@@ -1,2 +1,2 @@
 #!/bin/sh
-curl http://curlmyip.com/
+curl http://icanhazip.com/

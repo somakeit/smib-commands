@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 git fetch --quiet origin master
 STATUS=$?
 git reset --hard FETCH_HEAD

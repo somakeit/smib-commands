@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 # This script should be run from cron once a minute.
+# DO NOT RUN AS SAME USER AS SMIB!!!!
 # It is used to maintain a list of sha256 sums of MAC
 # addresses that have been visible to the router
 

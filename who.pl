@@ -17,11 +17,7 @@ my $argv = shift;
 # It MUST be uppercase
 # If you don't want a vanity username, you can add yourself over IRC by typing:
 #   /msg smib A1:B2:C3:d4:e5:f6
-my $friends = {
-  '7c94e41c60b497117f00b98e7846476d968f159b061d579e3679474b6073d007' => 'Bracken',
-  'b8762da1eafaf929a0e34f3729135ec123f4ee07c842216e8c03e23bbb6e1faf' => 'Bracken',
-  '5a226259614fed4be4d7dca236a7d4a42b96a679b0926a0a2f2fdff5059c1b97' => 'LIAR'};
-# If you ever come to me claiming you've cracked this, I expect to know LIAR's MAC.
+my $friends = {};
 my $FRIENDSFILE = 'who/friends.txt';
 
 # uniq
@@ -69,7 +65,7 @@ if (-e $FRIENDSFILE) {
 }
 
 # Get MAC addresses
-my @sums = `cat /tmp/irccat.who.macs.* 2>/dev/null`;
+my @sums = `cat /tmp/smib.who.macs.* 2>/dev/null`;
 
 if (@sums > 0) {
   # make an array of people in the space

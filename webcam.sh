@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "say cheese" | festival --tts
 sleep 5;
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
@@ -16,7 +16,7 @@ fi
 rm $FILE.1.jpg
 rm $FILE.2.jpg
 rm $FILE.3.jpg
-/usr/bin/scp -p $FILE www.somakeit.org.uk:www
+/usr/bin/scp -p $FILE irccat@www.somakeit.org.uk:www
 if [ "$?" != "0" ]; then exit 1; fi
 echo "Webcam: http://irccat.somakeit.org.uk/$FILENAME"
 rm $FILE

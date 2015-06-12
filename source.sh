@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if ! [[ "$4" =~ ^[a-zA-Z0-9/]+$ ]]; then
   echo "$1, ?source <commandname>"

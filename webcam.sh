@@ -7,8 +7,8 @@ echo "Ca-cheek" | festival --tts &
 /opt/vc/bin/raspistill --nopreview -t 3 -w 1280 -h 960 -o $FILE
 if [ "$?" != "0" ]; then exit 1; fi
 
-if [ $(identify -format "%[mean]" $FILE) -gt 5000 ]; then
-    if [ $(expr $RANDOM % 5) -eq 0 ]; then
+if [ $(identify -format "%[mean]" $FILE | cut -d '.' -f 1) -gt 5000 ]; then
+    if [ $(expr $RANDOM % 10) -eq 0 ]; then
         /usr/bin/composite webcam/ghostoverlay.png $FILE $FILE
     fi
 fi

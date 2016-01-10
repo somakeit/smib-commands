@@ -2,7 +2,7 @@
 
 if [[ -z "$4" ]]; then
     echo -n "flipdot takes these options: "
-    ls flipdot/demos/
+    ls flipdot/demos/ | tr '\n' ' '
 else
     if [[ -x "./flipdot/demos/$4" ]]; then
         ./flipdot/demos/$4 >/dev/null &
@@ -12,6 +12,6 @@ else
         kill $PID
     else
         echo -n "That's not an option, try: "
-        ls flipdot/demos/
+        ls flipdot/demos/ | tr '\n' ' '
     fi
 fi

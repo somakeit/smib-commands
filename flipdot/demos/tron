@@ -1,0 +1,9 @@
+#!/bin/bash
+
+./print.sh "" "" "" "Tron starting!"
+sleep 5
+./print.sh "" "" "" "sr-flipdot:8080"
+sleep 10
+
+nohup ssh pi@sr-flipdot flipdots/scripts/tron.py &
+disown %1

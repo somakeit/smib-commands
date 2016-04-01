@@ -7,7 +7,7 @@ if [[ -z "$OPT" ]]; then
     ls flipdot/demos/ | tr '\n' ' '
 else
     if [[ -x "./flipdot/demos/$OPT" ]]; then
-        ./flipdot/demos/$4 >/dev/null &
+        ./flipdot/demos/$OPT >/dev/null &
         PID=$!
         sleep 30
         disown $PID

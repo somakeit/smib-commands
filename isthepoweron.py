@@ -21,8 +21,8 @@ def on_message(client, userdata, msg):
         stop(client)
 
     phase1 = int(message["msg"]["ch1"]["watts"])
-    phase2 = int(message["msg"]["ch1"]["watts"])
-    phase3 = int(message["msg"]["ch1"]["watts"])
+    phase2 = int(message["msg"]["ch2"]["watts"])
+    phase3 = int(message["msg"]["ch3"]["watts"])
     total = phase1 + phase2 + phase3
 
     print "Space is using " + str(total) + "W (main room: " + str(phase1) + "W, workshop: " + str(phase3) + "W, lights: " + str(phase2) + "W)"

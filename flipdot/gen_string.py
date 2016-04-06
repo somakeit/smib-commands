@@ -5,7 +5,7 @@ from PIL import Image, ImageFont, ImageDraw
 import sys
 import fileinput
 
-UDPHOST="sr-flipdot.local"
+UDPHOST="flipdot.local"
 UDPPORT=2323
 
 FPS = 3

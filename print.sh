@@ -1,9 +1,5 @@
 #!/bin/bash
-if [ $(echo $4 | wc -c) -gt 17 ]; then
-  echo $4 | flipdot/scroll_text.py
-else
-  echo $4 | flipdot/gen_string.py
-fi
+echo $4 | flipdot/print_text.py
 if [ "$?" == "0" ]; then
   echo "$1, flipping done"
 else

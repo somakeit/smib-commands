@@ -1,9 +1,11 @@
 #!/bin/bash
-echo "say cheese" | festival --tts
+#echo "say cheese" | festival --tts
+espeak -ven+f3 -k5 -s150 "Say cheese" &> /dev/null
 sleep 5;
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
-echo "Ca-cheek" | festival --tts &
+#echo "Ca-cheek" | festival --tts &
+espeak -ven+f3 -k5 -s150 "Ca Cheek" &> /dev/null
 /opt/vc/bin/raspistill --nopreview -t 3 -w 1280 -h 960 -o $FILE
 if [ "$?" != "0" ]; then exit 1; fi
 

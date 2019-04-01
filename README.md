@@ -1,8 +1,8 @@
 smib-commands
 =============
 
-[smib][] is the So Make It bot, implemented using [smib.pl][]. He hangs
-around on #SoMakeIt and #SoutHACKton on irc.freenode.net and keeps us up
+[smib][] is the So Make It bot, implemented using [smib.pl][] for IRC and [smib.py](https://github.com/somakeit/slack-smib/) for Slack. He hangs
+around on the Space [slack server](http://slack.somakeit.org.uk) or #SoMakeIt and #SoutHACKton on irc.freenode.net and keeps us up
 to date. You can also send him commands...
 
 Running a command

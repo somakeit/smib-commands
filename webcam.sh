@@ -17,5 +17,6 @@ fi
 
 /usr/bin/scp -p $FILE irccat@www.somakeit.org.uk:www
 if [ "$?" != "0" ]; then exit 1; fi
-echo "FORCE_CHANNEL:General\n$1 your photo is at: http://irccat.somakeit.org.uk/$FILENAME"
+echo "FORCE_CHANNEL:General"
+echo "$1 your photo is at: http://irccat.somakeit.org.uk/$FILENAME"
 rm $FILE

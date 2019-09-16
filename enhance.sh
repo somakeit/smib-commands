@@ -1,10 +1,19 @@
 #!/bin/bash
-#echo "say cheese" | festival --tts
+if [[ "$(ps -o comm= $PPID)" =~ "smib.pl" ]]; then
+        if [[ "$2" != "#somakeit" ]]; then
+                echo "Sorry $1, you can only take photos in #somakeit."
+                exit 0
+        fi
+fi
+if [[ "$2" != "general" ]]; then
+        echo "Sorry $1, you can only take photos in #general."
+        exit 0
+fi
+
 espeak -ven+f3 -k5 -s150 "Say cheese" &> /dev/null
 sleep 5;
 FILENAME="enhanced-shot-`date +%F.%H-%M-%S`.jpg"
 FILE="/tmp/$FILENAME"
-#echo "Ca-cheek" | festival --tts &
 espeak -ven+f3 -k5 -s150 "Ca Cheek" &> /dev/null
 /opt/vc/bin/raspistill --nopreview -t 3 -w 1280 -h 960 -o $FILE
 if [ "$?" != "0" ]; then exit 1; fi

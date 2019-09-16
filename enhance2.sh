@@ -1,4 +1,15 @@
-#!/bin/sh
+#!/bin/bash
+if [[ "$(ps -o comm= $PPID)" =~ "smib.pl" ]]; then
+        if [[ "$2" != "#somakeit" ]]; then
+                echo "Sorry $1, you can only take photos in #somakeit."
+                exit 0
+        fi
+fi
+if [[ "$2" != "general" ]]; then
+        echo "Sorry $1, you can only take photos in #general."
+        exit 0
+fi
+
 echo "say cheese" | festival --tts
 sleep 5;
 FILENAME="shot-`date +%F.%H-%M-%S`.jpg"

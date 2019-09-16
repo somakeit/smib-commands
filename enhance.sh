@@ -4,8 +4,7 @@ if [[ "$(ps -o comm= $PPID)" =~ "smib.pl" ]]; then
                 echo "Sorry $1, you can only take photos in #somakeit."
                 exit 0
         fi
-fi
-if [[ "$2" != "general" ]]; then
+elif [[ "$2" != "general" ]]; then
         echo "Sorry $1, you can only take photos in #general."
         exit 0
 fi

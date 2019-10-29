@@ -16,7 +16,7 @@ FILE="/tmp/$FILENAME"
 espeak -ven+f3 -k5 -s150 "Ca Cheek" &> /dev/null
 /opt/vc/bin/raspistill --nopreview -t 3 -w 1280 -h 960 -o $FILE
 if [ "$?" != "0" ]; then exit 1; fi
-/usr/bin/convert -rotate 180 $FILE
+/usr/bin/convert -rotate 180 $FILE $FILE
 
 #Set the white level to the mean level plus one standard deviation
 /usr/bin/mogrify -level 0%,$(bc <<< "$(identify -verbose $FILE | grep -A 7 'Image statistics' | tr \) \( | grep 'mean' | cut -d \( -f 2) * 100 + $(identify -verbose $FILE | grep -A 7 'Image statistics' | tr \) \( | grep 'standard deviation' | cut -d \( -f 2) * 100")% $FILE
